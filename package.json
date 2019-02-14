@@ -4,5 +4,9 @@
   "description": "",
   "main": "index.js",
   "author": "Artem Borovensky",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Borovensky/ab-class-names"
+  }
 }
