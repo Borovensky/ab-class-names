@@ -20,7 +20,7 @@ export default (...args) => {
       throw new Error('arguments should be a string or an object')
     }
 
-    if (typeof arg === 'object') {
+    if (typeof arg === 'object' && typeof arg !== null) {
       if (typeof arg[Object.keys(arg)] !== 'boolean') {
         throw new Error('the value in object should be the boolean')
       }
