@@ -21,20 +21,22 @@ export default (...args) => {
     }
 
     if (typeof arg === 'object' && arg !== null) {
-      if (typeof arg[Object.keys(arg)] !== 'boolean') {
-        throw new Error('the value in object should be the boolean')
-      }
-
-      if (/\s/.test(Object.keys(arg))) {
-        const oldKey = Object.keys(arg).join();
-        const newKey = checkAndRemoveSpaces(Object.keys(arg).join())
-        Object.defineProperty(arg, newKey,
-          Object.getOwnPropertyDescriptor(arg, oldKey),
-        )
-        delete arg[oldKey];
-      };
-
-      return Object.keys(arg).filter(className => arg[className]).join(' ');
+      const arr = Object.keys(arg).map(key => {
+        if (typeof arg[key] !== 'boolean') {
+          throw new Error('the value in object should be the boolean')
+        }
+        if (/\s/.test(key)) {
+          const oldKey = key;
+          const newKey = checkAndRemoveSpaces(key)
+          Object.defineProperty(arg, newKey,
+            Object.getOwnPropertyDescriptor(arg, oldKey),
+          )
+          delete arg[oldKey];
+          return newKey
+        };
+        return arg[key] ? key : null;
+      });
+      return arr.join(' ')
     }
 
     if (typeof arg === 'string') {

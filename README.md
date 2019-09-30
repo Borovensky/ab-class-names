@@ -15,8 +15,19 @@ import classNames from 'ab-class-names' // you could name import whatever you wa
 
 <div className={classNames(
   'container',
-  {'redColor': true},
-  {'greenColor': false}
+  { 'redColor': true },
+  { 'greenColor': false }
+)}>
+</div>
+
+// or
+
+<div className={classNames(
+  'container',
+  { 
+    'redColor': true,
+    'greenColor': false,
+  },  
 )}>
 </div>
 ```
