@@ -16,10 +16,6 @@ const checkAndRemoveSpaces = (str) => {
 
 export default (...args) => {
   const arr = args.map(arg => {
-    if (typeof arg !== 'string' && typeof arg !== 'object') {
-      throw new Error('arguments should be a string or an object')
-    }
-
     if (typeof arg === 'object' && arg !== null) {
       const arr = Object.keys(arg).map(key => {
         if (typeof arg[key] !== 'boolean') {
